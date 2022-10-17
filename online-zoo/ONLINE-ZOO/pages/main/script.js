@@ -1,3 +1,34 @@
+let FirstP = document.querySelectorAll(".onePerson");
+let SlideLine = document.querySelector(".anketTest");
+let count = 0;
+let width = SlideLine.offsetWidth;
+let widthElem = width / FirstP.length / width;
+let stepRange = [];
+let inputDistance = document.querySelector(".testimonialsScroll");
+let maxStep = +inputDistance.getAttribute("max");
+let reLocation = [];
+for (let i = 0; i <= maxStep; i++) {
+  stepRange.push(i);
+  reLocation.push(Math.round(i * widthElem * 10000) / 100);
+}
+let currentValue;
+function changeLocation(value) {
+  let findIndex = stepRange.indexOf(+value);
+  return SlideLine.style.transform = `translateX(-${reLocation[findIndex]}%)`;
+}
+inputDistance.addEventListener("input", function () {
+  currentValue = inputDistance.value;
+  changeLocation(currentValue);
+});
+
+
+
+
+
+
+
+
+
 var element = document.querySelector(".nameArr");
 element.addEventListener("click", function() {
     element.classList.add("active");
@@ -390,7 +421,10 @@ async function commetns4() {
   document.querySelector(".comWhere").textContent = data[4].where;
   // document.querySelector(".comImg") = data.img `/clou2dy-JSFE2022Q3/online-zoo/ONLINE-ZOO/assets/icons/icon--main/onPeson.svg`;
 }
-// commetns4();
+
+
+// Testimonials range
+
 
 
 
